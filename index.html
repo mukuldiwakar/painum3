@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAINUM</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- SweetAlert CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+  <style>
+    body {
+      background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1Kg23mSDA2RJeGbneY9iQ2u5aWP-iR3Nz2V6usTtse0vBEk-Pe4bDmVlC__8yFZXqAev40ItTYstCwMldDzbgwZVdOHZPongjoBne9Sj8oEMwRq2shOqBhR4XXpvdooUWHicMKDBj9xx24MvUArKc-kJQiNOHiFxbU40gjt-5NfSN8CpstL5YTitoBz_K/s6000/glowing-lines-human-heart-3d-shape-dark-background-generative-ai_11zon.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .container {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .title {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .btn-section {
+      margin-top: 30px;
+      padding: 20px;
+    }
+    .btn {
+      margin-bottom: 10px;
+      background-color: #f44336; /* Red color for buttons */
+      color: #fff;
+      transition: background-color 0.3s ease; /* Add hover animation */
+      padding: 10px 20px; /* Add padding to buttons */
+    }
+    .btn:hover {
+      background-color: #ff5733; /* Lighter shade of red on hover */
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      background-color: black;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+  <script>
+    function showAccessCodePrompt() {
+      Swal.fire({
+        title: "Access Code Required",
+        html: "You need an access code to access the downloading page.<br>Ask the owner to get the code.",
+        input: "password",
+        inputLabel: "Enter Access Code",
+        inputAttributes: {
+          autocapitalize: "off",
+          maxlength: "4",
+        },
+        showCancelButton: true,
+        confirmButtonText: "Submit",
+        showLoaderOnConfirm: true,
+        preConfirm: (code) => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              if (code === "1432") {
+                resolve();
+              } else {
+                Swal.showValidationMessage("Incorrect access code. Please try again.");
+              }
+            }, 1000); // Add a slight delay for the animation effect
+          });
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "#main-page"; // Redirect to the main page when the correct code is entered
+        } else {
+          // If the user cancels or clicks outside the popup, redirect to the index.html page
+          window.location.href = "index.html";
+        }
+      });
+    }
+
+    // Show the access code prompt when the page loads
+    showAccessCodePrompt();
+  </script>
+
+  <div class="container">
+    <div class="title">
+      <h1>PAINUM</h1>
+    </div>
+    <div class="btn-section">
+      <h3 style="color: white;">Download PAINUM App</h3>
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" onclick="downloadApp('android')"><i class="fab fa-android"></i> For Android</button>
+        <br>
+        <button class="btn btn-primary btn-lg" onclick="downloadApp('apple')"><i class="fab fa-apple"></i> For Apple</button>
+      </div>
+    </div>
+    <div class="btn-section" style="padding-top: 40px;">
+      <h3 style="color: white;">Download Animax App</h3>
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" onclick="downloadApp('android')"><i class="fab fa-android"></i> For Android</button>
+        <br>
+        <button class="btn btn-primary btn-lg" onclick="downloadApp('apple')"><i class="fab fa-apple"></i> For Apple</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; PAINUM - All rights reserved
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function downloadApp(platform) {
+      // The downloadApp function remains unchanged
+      // (you can find it in the previous responses)
+    }
+  </script>
+</body>
+</html>
